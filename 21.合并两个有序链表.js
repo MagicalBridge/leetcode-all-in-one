@@ -37,7 +37,7 @@ var mergeTwoLists = function(l1, l2) {
     val: -1,
     next: null
   }
-  crt = mergeHead;
+  crt = mergeHead
   while(l1 && l2) {
     if(l1.val > l2.val) {
       crt.next = l2;

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-04 12:06:43
- * @LastEditTime: 2020-04-04 12:19:18
+ * @LastEditTime: 2020-04-07 05:58:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edithe 
  * @FilePath: /leetcode/打印两个有序链表的公共部分.java
@@ -18,7 +18,7 @@
 public class Node {
   public int value;
   public Node next;
-
+  // 这是类的构造函数
   public Node(int data) {
     this.value = data;
   }
