@@ -1,4 +1,13 @@
 /*
+ * @Author: your name
+ * @Date: 2020-04-01 11:14:28
+ * @LastEditTime: 2020-06-08 09:14:36
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * 
+ * @FilePath: /leetcode/27.移除元素.js
+ */
+/*
  * @lc app=leetcode.cn id=27 lang=javascript
  *
  * [27] 移除元素
@@ -61,7 +70,21 @@
  * @param {number} val
  * @return {number}
  */
-var removeElement = function(nums, val) {
-    
+// 这道题目拿到就应该知道是使用双指针的写法去做。
+// 一个计数变量res 还有一个是 循环的当前变量 i
+var removeElement = function (nums, val) {
+  // 最后返回的计数结果
+  let res = 0;
+  // 循环遍历数组
+  for (let i = 0; i < nums.length; i++) {
+    // 如果发现当前的循环指针和传入的 val 不相同
+    // 将当前的循环的值 覆盖 res 的部分。
+    if(nums[i] !== val) {
+      nums[res] = nums[i];
+      res++
+    }
+  }
+
+  return res;
 };
 
