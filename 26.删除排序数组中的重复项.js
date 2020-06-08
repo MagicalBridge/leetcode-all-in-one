@@ -1,4 +1,12 @@
 /*
+ * @Author: your name
+ * @Date: 2020-04-01 11:14:24
+ * @LastEditTime: 2020-06-08 09:34:13
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /leetcode/26.删除排序数组中的重复项.js
+ */
+/*
  * @lc app=leetcode.cn id=26 lang=javascript
  *
  * [26] 删除排序数组中的重复项
@@ -55,7 +63,24 @@
  * @param {number[]} nums
  * @return {number}
  */
-var removeDuplicates = function(nums) {
-    
+// 删除数组的重复项,这道题目和 27就地修改数组的问题
+// 还是使用双指针的问题。
+// 解题思路是开始的时候快慢指针都指向0 这个位置,
+// 如果是pre 和cur 相同 则快指针向前走一步，如果不同，则快慢指针都向前走一步
+var removeDuplicates = function (nums) {
+  let pre = 0;
+  let cur = 0;
+  let n = nums.length;
+  while (cur < n) {
+    // 如果快指针指向的当前值和慢指针相同，那么,
+    if (nums[cur] === nums[pre]) {
+      cur++;
+    } else {
+      pre++;
+      nums[pre] = nums[cur];
+      cur++
+    }
+  }
+  return pre+1;
 };
 
