@@ -1,4 +1,12 @@
 /*
+ * @Author: your name
+ * @Date: 2020-06-08 09:35:41
+ * @LastEditTime: 2020-06-10 08:49:32
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /leetcode/2.两数相加.js
+ */ 
+/*
  * @lc app=leetcode.cn id=2 lang=javascript
  *
  * [2] 两数相加
@@ -38,6 +46,6 @@
  * @return {ListNode}
  */
 var addTwoNumbers = function(l1, l2) {
-    
+  
 };
 
