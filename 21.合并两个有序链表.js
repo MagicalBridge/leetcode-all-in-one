@@ -32,25 +32,28 @@
  * @param {ListNode} l2
  * @return {ListNode}
  */
-var mergeTwoLists = function(l1, l2) {
-  var mergeHead = {
-    val: -1,
-    next: null
-  }
-  crt = mergeHead
-  while(l1 && l2) {
-    if(l1.val > l2.val) {
-      crt.next = l2;
+// 合并两个有序链表，看到这个题目，那天一整天都在思考这方面的问题
+// 
+var mergeTwoLists = function (l1, l2) {
+  // 这里应该初始化新的链表 头结点 值是什么并不重要 最终我们返回的是头结点的
+  // next指针
+  let mergeHead = new ListNode(-1);
+  // 将这个头节点 赋值给一个curr 变量，这也是一个指针，这个指针的作用是
+  // 跟随者另外两个合并指针一起运动
+  let curr = mergeHead;
+  // 循环的条件
+  while (l1 !== null && l2 !== null) {
+    // 比较一下 将较小的那个给这节点
+    if (l1.val > l2.val) {
+      curr.next = l2;
       l2 = l2.next;
-    }else {
-      crt.next = l1;
+    } else {
+      curr.next = l1;
       l1 = l1.next;
     }
-    crt = crt.next;
+    curr = curr.next;
   }
-
-  crt.next = l1 || l2;
-
+  curr.next = l1 || l2;
   return mergeHead.next;
 };
 
