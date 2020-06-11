@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-06-08 16:46:16
- * @LastEditTime: 2020-06-10 22:37:46
+ * @LastEditTime: 2020-06-11 09:42:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /leetcode/206.反转链表.js
@@ -47,19 +47,20 @@
 // 保存的目的是，当已经改变了head的next 执行null之后，这个时候取next 肯定就是null 了 而不是2 这个节点
 // 边界条件是 head 不是空的 且 链表 仅有一个节点的时候 不需要翻转
 var reverseList = function (head) {
-  // 翻转链表的思路其实也是挺清晰的,我们需要建立一个空节点 先让头节点，指向这个节点
-  // 当头结点指向完毕之后，需要移动坐标，让链表不断的向后移动
-  let prev = null; // 这个变量的作用是头结点的前面一个节点
-  let curr = head; // 当前节点
+  // 链表的相关问题一般都是可以通过递归或者普通遍历实现
+  if(head === null || head.next === null) {
+    return head; // 这是边界条件 如果本身是空，或者只有一个节点 无需翻转
+  }
+  let prev = null; // 设置一个虚拟头节点
+  let curr = head; // 将头结点的引用赋值给curr变量
 
-  // 循环的条件是当前的这个节点不是null
-  while (curr !== null) {
-    let next = curr.next;
-    curr.next = prev;
+  while(curr) { // 是curr 不断的向后移动
+    let next = curr.next; // 将curr的next引用保存起来，防止做变换的时候引用错乱
+    curr.next = prev; // 将当前的节点next指针之前前置节点 null
 
     prev = curr;
-    curr = next
+    curr = next;
   }
-  return prev
+  return prev;
 };
 
