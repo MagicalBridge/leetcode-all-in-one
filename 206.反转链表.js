@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-06-08 16:46:16
- * @LastEditTime: 2020-06-12 09:30:21
+ * @LastEditTime: 2020-06-15 16:03:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /leetcode/206.反转链表.js
@@ -41,26 +41,25 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-// 链表翻转题目描述是将一个链表 翻转
-// 脑海中一定要有一个图谱 这个图谱是
+// 上午回顾了一下链表翻转的思路
 var reverseList = function (head) {
-  // 设置一个头结点的前置节点;
-  let prev = null;
-  // 将头结点的赋值给curr curr 是不断向后面移动的
-  // 当curr 移动到 null 的时候循环就结束了
-  let curr = head;
+  // 如果head 是空，只有一个节点 无需翻转 直接返回 head
+  if (head === null || head.next === null) {
+    return head;
+  }
 
-  while (curr) {
-    // 保存当前需要改变的头结点引用
-    let next = curr.next;
-    
-    // 开始进行变化操作，首先将curr.next 指向 prev
-    curr.next = prev;
+  let pre = null; // 前置节点
+  let curr = head; // 将头结点赋值给 curr 
 
-    // 然后将prev 移动到curr 然后将curr 移动到next
-    prev = curr;
+  // 使用 while循环 循环的条件是 curr 不是空的
+  while (curr !== null) {
+    // 将后继节点保存下来，变换的时候会丢失。
+    let next = curr.next; 
+    curr.next = pre;
+
+    // 将curr 赋值给pre
+    pre = curr;
     curr = next;
   }
-  return prev
+  return pre
 };
-

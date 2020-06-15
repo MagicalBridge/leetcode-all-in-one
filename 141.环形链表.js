@@ -1,11 +1,11 @@
 /*
  * @Author: your name
  * @Date: 2020-06-09 11:52:57
- * @LastEditTime: 2020-06-09 12:20:12
+ * @LastEditTime: 2020-06-15 16:12:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /leetcode/141.环形链表.js
- */ 
+ */
 /*
  * @lc app=leetcode.cn id=141 lang=javascript
  *
@@ -75,17 +75,15 @@
 // 算法： 我们遍历所有的节点，并在hash表中存储每一个节点的引用（或者内存地址），如果当前节点为空节点（null）
 // 即已经检测到链表尾巴的下一个节点，那么我们已经遍历完了整个链表，并且链表不是环形链表。如果当前节点的引用已经存在于hash表中
 // 返回true，即整个链表为环形链表
-var hasCycle = function(head) {
-  // 创建一个set 集合 存放引用，为什么要使用set这种数据结构呢
-  // 不允许出现重复元素吧,
-  let nodesSeenSet = new Set();
-  // 使用while 如果head 为null 的话 说明已经循环到了尾结点 就肯定不是 环形链表
-  // 
-  while(head !== null) { 
-    if(nodesSeenSet.has(head)){
-      return true
+var hasCycle = function (head) {
+  let nodeSeenSet = new Set();
+  // 循环的条件是head 不等于null 否则的话说明已经循环到了链表的尾部 这
+  //  肯定不是环形链表
+  while (head !== null) {
+    if(nodeSeenSet.has(head)) {
+      return true;
     }else {
-      nodesSeenSet.add(head)
+      nodeSeenSet.add(head);
     }
     head = head.next;
   }
