@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-06-14 18:30:06
- * @LastEditTime: 2020-06-14 19:01:41
+ * @LastEditTime: 2020-06-16 16:42:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /leetcode/BubbleSort/BubbleSort.js
@@ -9,6 +9,7 @@
 // 冒泡排序有一个规律就是大循环的其实是比较了 数组的 长度-1次，因为每一次都能能确认一个最大的数
 // 所以每一趟排序之后，范围就-1了
 // 最后剩下一个数时候就不需要进行排序了。
+// 
 let arr = [3, 9, -1, 10, -2];
 
 let temp = 0;
