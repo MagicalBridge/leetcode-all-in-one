@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-06-14 18:50:30
- * @LastEditTime: 2020-06-14 19:02:26
+ * @LastEditTime: 2020-06-20 17:44:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /leetcode/BubbleSort/BubbleSort2.js
@@ -12,13 +12,20 @@
 
 let arr = [3, 9, -1, 10, -2];
 let temp = 0;
+let sortFlag = false; // 设置一个 布尔变量  标识是否进行过交换
 for (let i = 0; i < arr.length - 1; i++) {
   for (let j = 0; j < arr.length - 1 - i; j++) {
     if (arr[j] > arr[j + 1]) {
+      sortFlag = true; // 
       temp = arr[j];
       arr[j] = arr[j + 1];
       arr[j + 1] = temp;
     }
+  }
+  if (sortFlag === false) { // 在一趟排序中一次交换都没有发生
+    break;
+  } else {
+    sortFlag = false; // 重置flag 进行下次判断
   }
   console.log(`第${i + 1}排序的结果` + JSON.stringify(arr))
 }
