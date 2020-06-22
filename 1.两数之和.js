@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-01 11:13:13
- * @LastEditTime: 2020-04-02 06:08:21
+ * @LastEditTime: 2020-06-22 14:16:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /leetcode/1.两数之和.js
@@ -47,7 +47,7 @@ var twoSum = function (nums, target) {
   for (let i = 0; i < nums.length; i++) {
     // 对数组做map映射, key 是元素本身 value 是元素索引
     // js中的map方法使用set方法放进去 
-    map.set(nums[i],i);
+    map.set(nums[i], i);
   }
   console.log(map); // Map { 2 => 0, 7 => 1, 11 => 2, 15 => 3 }
 
@@ -57,8 +57,8 @@ var twoSum = function (nums, target) {
   for (let j = 0; j < nums.length; j++) {
     // 每遍历一个元素，将相对应的目标值找出来
     let anotherNumber = target - nums[j];
-    
-    if(map.has(anotherNumber) && map.get(anotherNumber)!== j) {
+
+    if (map.has(anotherNumber) && map.get(anotherNumber) !== j) {
       resArr.push(j);
       resArr.push(map.get(anotherNumber))
       break;
@@ -68,7 +68,7 @@ var twoSum = function (nums, target) {
 };
 
 // 测试用例
-let nums = [2, 7, 11, 15];
-let target = 9;
+let nums = [2, 1, 2, 15];
+let target = 4;
 
-twoSum(nums, target); 
+console.log(twoSum(nums, target));    // [0,2]
