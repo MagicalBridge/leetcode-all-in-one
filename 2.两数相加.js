@@ -1,38 +1,10 @@
 /*
- * @Author: your name
- * @Date: 2020-06-08 09:35:41
- * @LastEditTime: 2020-06-10 08:49:32
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: /leetcode/2.两数相加.js
- */ 
-/*
  * @lc app=leetcode.cn id=2 lang=javascript
  *
  * [2] 两数相加
- *
- * https://leetcode-cn.com/problems/add-two-numbers/description/
- *
- * algorithms
- * Medium (33.89%)
- * Total Accepted:    121.2K
- * Total Submissions: 357.5K
- * Testcase Example:  '[2,4,3]\n[5,6,4]'
- *
- * 给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
- * 
- * 如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。
- * 
- * 您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
- * 
- * 示例：
- * 
- * 输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
- * 输出：7 -> 0 -> 8
- * 原因：342 + 465 = 807
- * 
- * 
  */
+
+// @lc code=start
 /**
  * Definition for singly-linked list.
  * function ListNode(val) {
@@ -45,7 +17,39 @@
  * @param {ListNode} l2
  * @return {ListNode}
  */
-var addTwoNumbers = function(l1, l2) {
-  
+// 这道题目给定两个链表，让我们从头到尾依次往后加
+// 主要注意的是进制相关的内容
+var addTwoNumbers = function (l1, l2) {
+  // 创建一个虚拟头结点来作为新的创建链表的头结点的前置节点
+  let dummy = new ListNode(-1);
+  // 这个节点是不能动的，我们把它赋值给一个变量cur
+  let cur = dummy;
+  // 还需要一个变量用于计算sum 这个值 val1+val2+carry
+  let sum = 0;
+  // 进位
+  let carry = 0;
+
+  // 循环的条件是 l1 和 l2 只要有一个不为空就可以
+  // 在循环的内部需要注意判空
+  while (l1 || l2) {
+    sum = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + carry;
+    // cur 是作为移动的那个目标前进的。
+    cur.next = new ListNode(sum % 10);
+    cur = cur.next;
+    // 这个进制 如果是 大于等于10 则进制是1 否则是0
+    carry = sum >= 10 ? 1 : 0
+    // 然后开始移动指针 
+    if (l1 !== null) {
+      l1 = l1.next;
+    }
+    if (l2 !== null) {
+      l2 = l2.next;
+    }
+  }
+  // 循环结束 add 如果为1 在后面加一个add
+  carry && (cur.next = new ListNode(carry));
+  // 返回 头结点
+  return dummy.next;
 };
+// @lc code=end
 
