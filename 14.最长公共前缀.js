@@ -37,24 +37,24 @@
  * @param {string[]} strs
  * @return {string}
  */
-// 这道题目以第一个为基准
+// 最长公共前缀，我在之前有有用过图解法解决过，其实思路还是比较清晰的
 var longestCommonPrefix = function (strs) {
-  // 判断数组的长度，判断数组为一项和多项的情况
-  // 如果数组只有一个，那么判断数组这项是否为空
+  // 首先还是判断边界条件，判断数组的长度为0的情况
+  // 如果数组为空 直接返回 '' 如果数组 是只有一个元素，返回这一个元素即可。
   if (strs.length < 2) {
-    // 如果小于2 有两种可能 数组的长度是0，直接返回 '' 如果只有一个直接返回第一项
-    return strs.length === 0 ? '' : strs[0];
+    return strs.length === 0 ? '' : strs[0]
   }
-  // 剩下的情况就是数组的长度大于等于2的情况
-  let firstStr = strs[0]; // 将数组的第一项取出来
-  // 外层循环从第一项开始,
+
+  // 我们以第一个元素为基准
+  let firstStr = strs[0];
+  // 外层for循环，就是以第一个字符串为 标尺 挨个进行遍历
+  // 然后和数组的其他的几项同个位置的元素进行比较，待不同的时候直接返回
   for (let i = 0; i < firstStr.length; i++) {
     for (let j = 1; j < strs.length; j++) {
       if (firstStr[i] !== strs[j][i]) {
-        return firstStr.substring(0, i);   
+        return firstStr.substring(0, i)
       }
     }
-  }
+  };
   return firstStr;
-};
-
+}
