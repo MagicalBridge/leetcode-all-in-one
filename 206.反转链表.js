@@ -1,12 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-06-08 16:46:16
- * @LastEditTime: 2020-06-15 16:03:37
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /leetcode/206.反转链表.js
- */
-/*
  * @lc app=leetcode.cn id=206 lang=javascript
  *
  * [206] 反转链表
@@ -41,25 +33,25 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-// 上午回顾了一下链表翻转的思路
+// 链表翻转的精髓在于对指针的把握
 var reverseList = function (head) {
-  // 如果head 是空，只有一个节点 无需翻转 直接返回 head
-  if (head === null || head.next === null) {
+  // 首先考虑边界条件 链表本身为空,或者只有一个节点。
+  if(head === null || head.next === null) {
     return head;
   }
+  //创建变量 虚拟头结点 之后会作为尾结点存在
+  let pre =  null; 
+  let cur = head; // 将头节点赋值给 cur 之后这个cur会发生移动。
 
-  let pre = null; // 前置节点
-  let curr = head; // 将头结点赋值给 curr 
+  // 循环的条件是 cur 不是null
+  while(cur !== null) {
+    // 这里有一个技巧，在保证 cur 不是 null 的情况下 保存指针。
+    let next = cur.next;
 
-  // 使用 while循环 循环的条件是 curr 不是空的
-  while (curr !== null) {
-    // 将后继节点保存下来，变换的时候会丢失。
-    let next = curr.next; 
-    curr.next = pre;
-
-    // 将curr 赋值给pre
-    pre = curr;
-    curr = next;
+    // 将 cur赋值给前一个节点；
+    cur.next = pre;
+    pre = cur; // pre 移动到cur的位置
+    cur = next; // 移动cur到next
   }
-  return pre
+  return pre;
 };
