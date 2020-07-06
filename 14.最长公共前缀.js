@@ -1,12 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-04-01 11:14:15
- * @LastEditTime: 2020-04-08 13:23:13
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /leetcode/14.最长公共前缀.js
- */
-/*
  * @lc app=leetcode.cn id=14 lang=javascript
  *
  * [14] 最长公共前缀
@@ -57,9 +49,9 @@ var longestCommonPrefix = function (strs) {
   let firstStr = strs[0]; // 将数组的第一项取出来
   // 外层循环从第一项开始,
   for (let i = 0; i < firstStr.length; i++) {
-    for (let j = 1; j < strs[j].length; j++) {
+    for (let j = 1; j < strs.length; j++) {
       if (firstStr[i] !== strs[j][i]) {
-        return firstStr.substring(0, i);
+        return firstStr.substring(0, i);   
       }
     }
   }
