@@ -1,12 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-06-23 21:54:41
- * @LastEditTime: 2020-06-23 22:03:55
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /leetcode/704.binary-search.js
- */
-/*
  * @lc app=leetcode.cn id=704 lang=javascript
  *
  * [704] Binary Search
@@ -48,26 +40,30 @@
  * 
  * 
  */
+// 二分搜索是非常经典的算法，主要需要考虑的是边界条件
 /**
  * @param {number[]} nums
  * @param {number} target
  * @return {number}
  */
 var search = function (nums, target) {
+  // 首先考虑边界条件，二分搜索貌似是没有边界条件的
   let l = 0;
-  let r = nums.length - 1; // 在[l...r] 的范围里面寻找target
-  while (l <= r) { // 当l === r 时候 区间[l...r] 依然是有效的
+  let r = nums.length - 1
+  // 通过上述变量的设置 能够保证的是 左右边界都是可以取到的。
+  while (l <= r) { // 因为我们设置的是左边和右边都是闭区间,
     let mid = parseInt((l + r) / 2, 10);
+
     if (nums[mid] === target) {
       return mid;
     }
 
     if (target > nums[mid]) {
-      l = mid + 1; // target 在 [mid+1 ... r] 中
+      l = mid + 1
     } else {
-      r = mid - 1 // target 在 [l...mid-1]中
+      r = mid - 1;
     }
   }
-  return -1
+  return -1;
 };
 
