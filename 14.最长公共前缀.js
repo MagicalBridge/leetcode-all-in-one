@@ -44,7 +44,6 @@ var longestCommonPrefix = function (strs) {
   if (strs.length < 2) {
     return strs.length === 0 ? '' : strs[0]
   }
-
   // 我们以第一个元素为基准
   let firstStr = strs[0];
   // 外层for循环，就是以第一个字符串为 标尺 挨个进行遍历
