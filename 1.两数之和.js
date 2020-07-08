@@ -50,6 +50,8 @@ var twoSum = function (nums, target) {
     map.set(nums[i], i);
   }
   console.log(map); // Map { 2 => 0, 7 => 1, 11 => 2, 15 => 3 }
+  // 这里需要注意一个知识点，就是map结构也是不允许出现重复的key
+  // 否则后面的会覆盖前面的。
 
   let resArr = [];
 
@@ -57,7 +59,8 @@ var twoSum = function (nums, target) {
   for (let j = 0; j < nums.length; j++) {
     // 每遍历一个元素，将相对应的目标值找出来
     let anotherNumber = target - nums[j];
-
+    // map.has 方法用来 确定是否有
+    // map.get 取到对应的value值
     if (map.has(anotherNumber) && map.get(anotherNumber) !== j) {
       resArr.push(j);
       resArr.push(map.get(anotherNumber))
