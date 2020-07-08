@@ -28,10 +28,15 @@ var lengthOfLongestSubstring = function (s) {
     // 说明已经在数组中存在了
     if (index !== -1) {
       // splice 为什么是 index+1 而不是index？
-      // 这里牵扯出来了 另外一个问题。
+      // 第二参数的含义是 删除多少个 如果刚好 这个参数
+      // 就拿这个  abcabcbb 这个字符串为例子, 当走到 第二个a的时候,
+      // index 是 0 删除肯定要删除一个 所以这里 +1 
+      // 同样的b 也是这种情况 c 也是这样情况。第一轮结束之后。
+      // index 这个也是从0 开始计数的，索引和数量正好相差1.
       arr.splice(0, index + 1)
     }
     arr.push(s.charAt(i));
+    // 留在数组中的部分数量。是不重复的元素。每一轮都更新一下。
     max = Math.max(arr.length, max);
   }
   return max;
