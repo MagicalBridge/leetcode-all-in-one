@@ -27,17 +27,19 @@
 // 使用的还是那种映射的关系 （i+k）% n --> i
 // 这样的解法还是需要一个中间数组来作为变量
 var rotate = function (nums, k) {
+  // 创建一个空的数组用于中转使用
   let a = [];
   for (let i = 0; i < nums.length; i++) {
-    console.log((i + k) % nums.length);
-    // console.log(i);
     a[(i + k) % nums.length] = nums[i];
   }
-  console.log(a)
+
   for (let i = 0; i < nums.length; i++) {
     nums[i] = a[i];
   }
 };
-rotate([1, 2, 3, 4, 5, 6, 7],3);
+
+rotate([1, 2, 3, 4, 5, 6, 7], 3);
+
+
 // @lc code=end
 
