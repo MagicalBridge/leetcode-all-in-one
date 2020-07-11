@@ -70,21 +70,28 @@
  * @param {number} val
  * @return {number}
  */
-// 这道题目拿到就应该知道是使用双指针的写法去做。
-// 一个计数变量res 还有一个是 循环的当前变量 i
+// 这道题目给的一个提示标签是 array 和 two-pointers
+// 原地删除的意思是 不能使用额外的空间，不能创建中间变量
+// 并返回移除后数组的新的长度
+// 看这个题目的意思是将数组中所有的重复的元素全部移除。
+// 数组移除数据的题目很容易就能想到双指针的思路，其中的一个
+// 指针非常好理解其实就是当前的for循环的指针。
+// 另外一个指针是什么呢 另一个指针也从0开始。
+// 描述下自己的思路
 var removeElement = function (nums, val) {
-  // 最后返回的计数结果
-  let res = 0;
-  // 循环遍历数组
+  let k = 0;
   for (let i = 0; i < nums.length; i++) {
-    // 如果发现当前的循环指针和传入的 val 不相同
-    // 将当前的循环的值 覆盖 res 的部分。
+    // 如果发现 循环遍历的当前元素和目标元素不同时候
     if(nums[i] !== val) {
-      nums[res] = nums[i];
-      res++
+      nums[k] = nums[i];
+      k++
     }
   }
-
-  return res;
+  //根据最后的实践结果
+  return k;
 };
 
+let nums = [3,2,2,3];
+let val = 3;
+
+console.log(removeElement(nums,val));
