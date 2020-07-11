@@ -40,30 +40,33 @@
  * 
  * 
  */
-// 二分搜索是非常经典的算法，主要需要考虑的是边界条件
 /**
  * @param {number[]} nums
  * @param {number} target
  * @return {number}
  */
+// 二分搜索的关键是确认边界条件
 var search = function (nums, target) {
-  // 首先考虑边界条件，二分搜索貌似是没有边界条件的
   let l = 0;
-  let r = nums.length - 1
-  // 通过上述变量的设置 能够保证的是 左右边界都是可以取到的。
-  while (l <= r) { // 因为我们设置的是左边和右边都是闭区间,
-    let mid = parseInt((l + r) / 2, 10);
+  let r = nums.length - 1; // 这样的范围是可以取到的范围是[0,数组的最后一个数字] 两边都是闭区间
 
+  while (l <= r) { // 左边等于右边的情况也是能够取到的
+    let mid = parseInt((l + r) / 2, 10); // 
     if (nums[mid] === target) {
       return mid;
     }
 
+    // 如果目标值 大于 中间值
     if (target > nums[mid]) {
-      l = mid + 1
+      l = mid + 1;
     } else {
       r = mid - 1;
     }
   }
-  return -1;
+  // 找不到返回 -1  没有认真读题
+  return -1
 };
 
+let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let target = 7;
+console.log(search(nums,target));
