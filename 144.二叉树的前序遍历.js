@@ -1,12 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-06-23 11:55:23
- * @LastEditTime: 2020-06-23 12:03:34
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /leetcode/144.二叉树的前序遍历.js
- */
-/*
  * @lc app=leetcode.cn id=144 lang=javascript
  *
  * [144] 二叉树的前序遍历

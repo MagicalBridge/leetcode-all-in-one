@@ -1,12 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-04-01 11:13:13
- * @LastEditTime: 2020-06-22 14:16:49
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /leetcode/1.两数之和.js
- */
-/*
  * @lc app=leetcode.cn id=1 lang=javascript
  *
  * [1] 两数之和

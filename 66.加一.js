@@ -1,12 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-04-01 11:14:48
- * @LastEditTime: 2020-04-09 08:48:00
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /leetcode/66.加一.js
- */
-/*
  * @lc app=leetcode.cn id=66 lang=javascript
  *
  * [66] 加一

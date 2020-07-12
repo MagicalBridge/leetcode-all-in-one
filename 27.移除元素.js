@@ -1,13 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-04-01 11:14:28
- * @LastEditTime: 2020-06-08 09:14:36
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * 
- * @FilePath: /leetcode/27.移除元素.js
- */
-/*
  * @lc app=leetcode.cn id=27 lang=javascript
  *
  * [27] 移除元素

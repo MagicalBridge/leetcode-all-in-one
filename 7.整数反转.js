@@ -1,12 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-04-01 11:13:46
- * @LastEditTime: 2020-04-02 06:33:47
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /leetcode/7.整数反转.js
- */
-/*
  * @lc app=leetcode.cn id=7 lang=javascript
  *
  * [7] 整数反转

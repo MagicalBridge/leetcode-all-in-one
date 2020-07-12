@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2020-06-09 09:38:32
- * @LastEditTime: 2020-06-09 10:00:54
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /leetcode/实现申请拷贝拷贝.js
- */
 // 这里只讨论数组和对象，因为要考虑函数或者正则的话边界有些大。
 // 首先写浅拷贝的实现
 var shallowCopy = function (obj) {

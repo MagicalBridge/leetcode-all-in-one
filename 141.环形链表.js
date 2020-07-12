@@ -1,12 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-06-09 11:52:57
- * @LastEditTime: 2020-06-15 16:12:43
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /leetcode/141.环形链表.js
- */
-/*
  * @lc app=leetcode.cn id=141 lang=javascript
  *
  * [141] 环形链表

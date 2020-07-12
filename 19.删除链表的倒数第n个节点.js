@@ -1,12 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-06-22 14:41:33
- * @LastEditTime: 2020-06-22 15:32:27
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /leetcode/19.删除链表的倒数第n个节点.js
- */
-/*
  * @lc app=leetcode.cn id=19 lang=javascript
  *
  * [19] 删除链表的倒数第N个节点

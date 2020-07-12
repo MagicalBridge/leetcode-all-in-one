@@ -1,12 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-06-25 20:20:52
- * @LastEditTime: 2020-06-25 20:50:34
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /leetcode/283.移动零.js
- */
-/*
  * @lc app=leetcode.cn id=283 lang=javascript
  *
  * [283] 移动零

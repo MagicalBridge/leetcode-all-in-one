@@ -1,12 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-06-15 18:59:06
- * @LastEditTime: 2020-06-15 19:01:31
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /leetcode/234.回文链表.js
- */
-/*
  * @lc app=leetcode.cn id=234 lang=javascript
  *
  * [234] 回文链表

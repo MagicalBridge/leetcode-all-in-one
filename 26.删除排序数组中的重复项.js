@@ -1,12 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-04-01 11:14:24
- * @LastEditTime: 2020-06-08 09:34:13
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /leetcode/26.删除排序数组中的重复项.js
- */
-/*
  * @lc app=leetcode.cn id=26 lang=javascript
  *
  * [26] 删除排序数组中的重复项

@@ -1,12 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-06-14 10:24:11
- * @LastEditTime: 2020-06-14 10:31:26
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /leetcode/100.相同的树.js
- */
-/*
  * @lc app=leetcode.cn id=100 lang=javascript
  *
  * [100] 相同的树

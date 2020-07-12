@@ -1,12 +1,4 @@
 /*
- * @Author: your name
- * @Date: 2020-06-15 18:23:15
- * @LastEditTime: 2020-06-15 18:56:31
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /leetcode/237.删除链表中的节点.js
- */ 
-/*
  * @lc app=leetcode.cn id=237 lang=javascript
  *
  * [237] 删除链表中的节点
