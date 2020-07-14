@@ -48,22 +48,18 @@
 // 我们按照高度顺序一层层的访问整棵树，高层次的节点，高层次的节点
 // 会比低层次的节点优先访问到，
 // 这道题目使用非递归的写法，我们需要借助栈这种数据结构的辅助
-// 
 var preorderTraversal = function (root) {
-  // 用于返回的数组
-  let result = []
-  // 这是递归的函数 接收一个node节点作为参数
-  var preOrderTraverseNode = (node) => {
-    // 如果node存在的话
-    if (node) {
-      // 先根节点
-      result.push(node.val)
-      // 然后遍历左子树
-      preOrderTraverseNode(node.left)
-      // 再遍历右子树
-      preOrderTraverseNode(node.right)
+  let result = [];
+
+  let preorderTraversNode = function (node) {
+    if (node) { // 如果node 存在的话
+      result.push(node.val);
+      // 遍历左子树
+      preorderTraversNode(node.left)
+      // 遍历右子树
+      preorderTraversNode(node.right)
     }
   }
-  preOrderTraverseNode(root)
-  return result
+  preorderTraversNode(root)
+  return result;
 };
