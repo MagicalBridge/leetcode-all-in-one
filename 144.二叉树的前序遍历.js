@@ -48,18 +48,47 @@
 // 我们按照高度顺序一层层的访问整棵树，高层次的节点，高层次的节点
 // 会比低层次的节点优先访问到，
 // 这道题目使用非递归的写法，我们需要借助栈这种数据结构的辅助
+// var preorderTraversal = function (root) {
+//   let result = [];
+//   let preorderTraversNode = function (node) {
+//     if (node) { // 如果node 存在的话
+//       result.push(node.val);
+//       // 遍历左子树
+//       preorderTraversNode(node.left)
+//       // 遍历右子树
+//       preorderTraversNode(node.right)
+//     }
+//   }
+//   preorderTraversNode(root)
+//   return result;
+// };
+// 利用栈来记录遍历的过程，实际上，递归就使用了调用栈，所以这里我们可以用栈来模拟递归的过程
+// 迭代实现:
+// 首先根元素入栈
+// 将根节点出栈，将根节点的值放入结果数组中。
+// 然后遍历左子树，右子树 因为栈树先入后出，所以我们先右子树入栈 然后左子树入栈
+// 继续出栈（左子树被出栈）
 var preorderTraversal = function (root) {
-  let result = [];
+  const list = [];
+  const stack = [];
+  // 当根节点不为空的时候，将根节点入栈
+  if (root) {
+    stack.push(root);
+  }
+  while (stack.length > 0) {
+    const curNode = stack.pop();
+    // 第一步的时候，先访问的是根节点
+    list.push(curNode.val);
 
-  let preorderTraversNode = function (node) {
-    if (node) { // 如果node 存在的话
-      result.push(node.val);
-      // 遍历左子树
-      preorderTraversNode(node.left)
-      // 遍历右子树
-      preorderTraversNode(node.right)
+    // 我们先打印左子树，然后是右子树
+    // 所以先加入栈的是右子树，然后是左子树
+    if (curNode.right !== null) {
+      stack.push(curNode.right)
+    }
+    if (curNode.left !== null) {
+      stack.push(curNode.left)
     }
   }
-  preorderTraversNode(root)
-  return result;
+  return list
 };
+
