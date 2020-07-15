@@ -34,10 +34,16 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
+// 这道题目其实梳理清楚了也不是很难，整体的思路和206题那个链表翻转差不多
+// 链表翻转那道题目设置了三个变量。这道题目需要设置4个变量
 var swapPairs = function (head) {
-  let shaob = new ListNode(0); // 添加哨兵 加0
-  shaob.next = head;
-  let shao = shaob
+  let dummyHead = new ListNode(0); // 添加虚拟头结点 加0
+  // 将虚拟头结点的next指针指向 head。
+  dummyHead.next = head;
+  // 将dummyHead 赋值给一个变量。
+  // 其实这种题目做多了就会感觉是一个套路，为什么要赋值给一个变量
+  let shao = dummyHead
+  // 这中间就是迭代替换的过程
   while (shao.next != null && shao.next.next != null) {
     let start = shao.next; // 代表第一次的1
     let end = shao.next.next; // 代表第一次的2
@@ -46,6 +52,6 @@ var swapPairs = function (head) {
     end.next = start; // 2 指向 1
     shao = start; // 将此时的1 也就是交换后的1当哨兵 继续循环
   }
-  return shaob.next // 返回的是最初哨兵的前一个 就是链表头
+  return dummyHead.next // 返回的是最初哨兵的前一个 就是链表头
 };
 

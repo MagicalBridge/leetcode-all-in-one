@@ -82,6 +82,18 @@ var removeElement = function (nums, val) {
   return k;
 };
 
+// 使用jsliang的这一种解题思路
+var removeElement = function(nums, val) {
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === val) {
+      nums.splice(i, 1);
+      // splice改变了原数组，因此要重新检查当前索引
+      i--;
+    }
+  }
+  return nums.length;
+};
+
 let nums = [3,2,2,3];
 let val = 3;
 

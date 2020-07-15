@@ -2,15 +2,6 @@
  * @lc app=leetcode.cn id=26 lang=javascript
  *
  * [26] 删除排序数组中的重复项
- *
- * https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/description/
- *
- * algorithms
- * Easy (43.98%)
- * Total Accepted:    154.7K
- * Total Submissions: 336.7K
- * Testcase Example:  '[1,1,2]'
- *
  * 给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
  * 
  * 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
@@ -74,5 +65,16 @@ var removeDuplicates = function (nums) {
     }
   }
   return pre+1;
+};
+
+// 这是第二种解法，根据js梁的说法，是另外一种的
+// 双指针思路。
+var removeDuplicates = function(nums) {
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === nums[i + 1]) {
+      nums.splice(i, 1);
+      i--;
+    }
+  }
 };
 
