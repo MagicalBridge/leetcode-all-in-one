@@ -1,22 +1,9 @@
 /*
  * @lc app=leetcode.cn id=141 lang=javascript
- *
  * [141] 环形链表
- *
- * https://leetcode-cn.com/problems/linked-list-cycle/description/
- *
- * algorithms
- * Easy (38.56%)
- * Total Accepted:    167.7K
- * Total Submissions: 348.3K
- * Testcase Example:  '[3,2,0,-4]\n1'
- *
  * 给定一个链表，判断链表中是否有环。
  * 
  * 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。
- * 
- * 
- * 
  * 示例 1：
  * 
  * 输入：head = [3,2,0,-4], pos = 1
@@ -42,10 +29,6 @@
  * 解释：链表中没有环。
  * 
  * 
- * 
- * 
- * 
- * 
  * 进阶：
  * 
  * 你能用 O(1)（即，常量）内存解决此问题吗？
@@ -63,8 +46,9 @@
  * @param {ListNode} head
  * @return {boolean}
  */
+// 这道题目给的标签是linklist 和 双指针
 // 思路：我们可以通过检查一个节点，此前是否被访问过来判断是否为环形链表，常用的方法就是使用hash表
-// 算法： 我们遍历所有的节点，并在hash表中存储每一个节点的引用（或者内存地址），如果当前节点为空节点（null）
+// 算法：我们遍历所有的节点，并在hash表中存储每一个节点的引用（或者内存地址），如果当前节点为空节点（null）
 // 即已经检测到链表尾巴的下一个节点，那么我们已经遍历完了整个链表，并且链表不是环形链表。如果当前节点的引用已经存在于hash表中
 // 返回true，即整个链表为环形链表
 var hasCycle = function (head) {

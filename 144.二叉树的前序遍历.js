@@ -75,7 +75,9 @@ var preorderTraversal = function (root) {
   if (root) {
     stack.push(root);
   }
+  // 循环的条件是栈不为空
   while (stack.length > 0) {
+    // 将栈顶的元素弹出来
     const curNode = stack.pop();
     // 第一步的时候，先访问的是根节点
     list.push(curNode.val);
