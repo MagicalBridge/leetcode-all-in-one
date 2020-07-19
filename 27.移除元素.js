@@ -1,60 +1,7 @@
 /*
  * @lc app=leetcode.cn id=27 lang=javascript
- *
- * [27] 移除元素
- *
- * https://leetcode-cn.com/problems/remove-element/description/
- *
- * algorithms
- * Easy (54.50%)
- * Total Accepted:    56.3K
- * Total Submissions: 102.8K
- * Testcase Example:  '[3,2,2,3]\n3'
- *
- * 给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。
- * 
- * 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
- * 
- * 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。
- * 
- * 示例 1:
- * 
- * 给定 nums = [3,2,2,3], val = 3,
- * 
- * 函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。
- * 
- * 你不需要考虑数组中超出新长度后面的元素。
- * 
- * 
- * 示例 2:
- * 
- * 给定 nums = [0,1,2,2,3,0,4,2], val = 2,
- * 
- * 函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。
- * 
- * 注意这五个元素可为任意顺序。
- * 
- * 你不需要考虑数组中超出新长度后面的元素。
- * 
- * 
- * 说明:
- * 
- * 为什么返回数值是整数，但输出的答案是数组呢?
- * 
- * 请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。
- * 
- * 你可以想象内部操作如下:
- * 
- * // nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝
- * int len = removeElement(nums, val);
- * 
- * // 在函数里修改输入数组对于调用者是可见的。
- * // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。
- * for (int i = 0; i < len; i++) {
- * print(nums[i]);
- * }
- * 
- * 
+ 0719 复习 移除数组中的元素，题目给的一个例子是 [3,2,2,3] 
+移除之后 数组的长度是 2 且数组的前两项分别是: 2,2
  */
 /**
  * @param {number[]} nums
@@ -66,24 +13,25 @@
 // 并返回移除后数组的新的长度
 // 看这个题目的意思是将数组中所有的重复的元素全部移除。
 // 数组移除数据的题目很容易就能想到双指针的思路，其中的一个
-// 指针非常好理解其实就是当前的for循环的指针。
-// 另外一个指针是什么呢 另一个指针也从0开始。
-// 描述下自己的思路
+// 指针非常好理解其实就是当前的for循环的指针。另外一个指针是什么呢 另一个指针也从0开始。
 var removeElement = function (nums, val) {
-  let k = 0;
+  // 我在写这道题目的时候在思考一个问题，你真的理解什么是双指针吗？
+  let k = 0; // 这是第二个指针
   for (let i = 0; i < nums.length; i++) {
-    // 如果发现 循环遍历的当前元素和目标元素不同时候
-    if(nums[i] !== val) {
+    // 通过题目的描述可以知道，这里面有一个覆盖的操作。
+    // 将后面的数字覆盖到了前面，那么就肯定有赋值的操作
+    // 这里总感觉是快慢指针的思路, 遇到不同的，覆盖当前k位置，k就进行自增操作
+    // 自增操作之后循环完毕整个数组之后, 返回的k 就是 不相同的数字的个数。
+    if (nums[i] !== val) {
       nums[k] = nums[i];
-      k++
+      k++;
     }
   }
-  //根据最后的实践结果
-  return k;
+  return k
 };
 
 // 使用jsliang的这一种解题思路
-var removeElement = function(nums, val) {
+var removeElement = function (nums, val) {
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] === val) {
       nums.splice(i, 1);
@@ -94,7 +42,7 @@ var removeElement = function(nums, val) {
   return nums.length;
 };
 
-let nums = [3,2,2,3];
+let nums = [3, 2, 2, 3];
 let val = 3;
 
-console.log(removeElement(nums,val));
+console.log(removeElement(nums, val));
