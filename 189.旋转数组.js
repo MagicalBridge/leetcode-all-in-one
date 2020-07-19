@@ -16,12 +16,12 @@
 // i = 1 i 小于 3 符合条件 执行循环 数组变成了  [6,7,1,2,3,4,5]
 // i = 2 i 小于3 符合条件  执行循环 [5,6,7,1,2,3,4]
 // 但是使用这种方法比较low 但是能够解决问题。
-// var rotate = function (nums, k) {
-//   // 首先还是考虑边界条件
-//   for (let i = 0; i < k; i++) {
-//     nums.unshift(nums.pop());
-//   }
-// };
+var rotate = function (nums, k) {
+  // 首先还是考虑边界条件
+  for (let i = 0; i < k; i++) {
+    nums.unshift(nums.pop());
+  }
+};
 
 // 解法2 
 // 使用的还是那种映射的关系 （i+k）% n --> i

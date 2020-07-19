@@ -46,3 +46,5 @@ let nums = [3, 2, 2, 3];
 let val = 3;
 
 console.log(removeElement(nums, val));
+
+// 这道题目还给了另外一种可能性，当需要删除的元素很少的时候,
