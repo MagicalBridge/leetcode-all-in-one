@@ -4,17 +4,10 @@
  * [704] Binary Search
  *
  * https://leetcode-cn.com/problems/binary-search/description/
- *
- * algorithms
- * Easy (48.54%)
- * Total Accepted:    49.4K
- * Total Submissions: 91.4K
- * Testcase Example:  '[-1,0,3,5,9,12]\n9'
+
  *
  * 给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target  ，写一个函数搜索 nums 中的
  * target，如果目标值存在返回下标，否则返回 -1。
- * 
- * 
  * 示例 1:
  * 
  * 输入: nums = [-1,0,3,5,9,12], target = 9
@@ -67,6 +60,28 @@ var search = function (nums, target) {
   return -1
 };
 
+// 0720复习二分查找
+var search = function (nums, target) {
+  // 设置的区间是 左边闭区间 右边也是闭区间
+  let left = 0;
+  let right = nums.length - 1;
+
+  while (left <= right) { // 因为是闭区间，所以 等于也是成立的
+    let mid = parseInt((left + right) / 2, 10);
+
+    if (nums[mid] === target) {
+      return mid
+    }
+
+    if (target > nums[mid]) {
+      left = mid + 1;
+    } else {
+      right = mid - 1
+    }
+  }
+  return -1;
+}
+
 let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 let target = 7;
-console.log(search(nums,target));
+console.log(search(nums, target));
