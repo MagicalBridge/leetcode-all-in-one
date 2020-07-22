@@ -94,3 +94,20 @@ var preorderTraversal = function (root) {
   return list
 };
 
+// 0723 复习二叉树的先序遍历。
+// 树型结构中，使用递归进行遍历是最简单的
+var preorderTraversal = function (root) {
+  let result = [];
+  let preorderTraversNode = function (node) {
+    if (node) { // 如果node 存在的话
+      result.push(node.val);
+      // 遍历左子树
+      preorderTraversNode(node.left)
+      // 遍历右子树
+      preorderTraversNode(node.right)
+    }
+  }
+  preorderTraversNode(root)
+  return result;
+};
+
