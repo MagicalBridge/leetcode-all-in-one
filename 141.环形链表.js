@@ -56,13 +56,34 @@ var hasCycle = function (head) {
   // 循环的条件是head 不等于null 否则的话说明已经循环到了链表的尾部 这
   //  肯定不是环形链表
   while (head !== null) {
-    if(nodeSeenSet.has(head)) {
+    if (nodeSeenSet.has(head)) {
       return true;
-    }else {
+    } else {
       nodeSeenSet.add(head);
     }
     head = head.next;
   }
   return false;
 };
+
+// 0723 环形链表复习 说道环形链表，我的脑海中浮现
+// 思路： 我们可以通过检查一个节点，此前是否被访问过来判断是否为环形链表，
+// 常用的方法是hash表
+// 算法：我们遍历所有的节点，并在hash表中存储每一个节点的引用（或者内存地址），如果当前节点为空节点（null）
+// 即已经检测到了链表尾巴的下一个节点，那么我们就已经遍历完了整个链表并且链表不是环形链表
+// 如果当前节点的引用已经存在于hash表中 返回true 即整个链表为环形链表
+
+var hasCycle = function (head) {
+  let nodeSeenSet = new Set();
+  // 循环的条件是head 不等于 null 否则的话说明已经循环到了链表的尾部 这肯定不是环形链表
+  while (head !== null) {
+    if (nodeSeenSet.has(head)) {
+      return true
+    } else {
+      nodeSeenSet.add(head);
+    }
+    head = head.next;
+  }
+  return false
+}
 
