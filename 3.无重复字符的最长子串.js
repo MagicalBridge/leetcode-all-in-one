@@ -72,4 +72,34 @@ var lengthOfLongestSubstring = function (s) {
   }
   return max
 }
+
+// 0726 先复习一下思路
+// 最长没有重复元素的字符串  
+var lengthOfLongestSubstring = function (s) {
+  // 我思考到一个什么事情呢，就是人的思维是跳跃性的
+  // 自动的逻辑处理能力非常的强，就拿这道题来说，你很容易根据题目给的规则
+  // 快速在小范围数据中找到答案，但是在大数据量中，人是不可能一下子就能找到
+  // 答案的，即使是计算机也需要通过一些算法进行计算判断
+  let arr = []; // 这道题还是使用滑动窗口的形式来做，
+  let max = 0;  // 如果考虑到边界情况这个部分确实有可能为空
+
+  for (let i = 0; i < s.length; i++) {
+    // 这种情况下肯定是缺少不了循环的
+    // 数组是具有indexOf 方法的 返回指定字符串出现的第一个位置
+    let index = arr.indexOf(s[i])
+
+    if (index !== -1) { // 说明数组中已经有了这个元素
+      // splice 这个方法 第一个参数 是 起始位置，第二个参数是个数
+      // 因为 index是从0 开始计数的所以需要 +1
+      arr.splice(0, index + 1)
+    }
+
+    // 首先将当前的元素push进去,但这也不是没有条件的push
+    // push之前需要检查 字符串中是否已经有了 这个元素
+    arr.push(s.charAt(i));
+    // 其实并不是很明白 每次都更新一下肯定是没有问题的
+    max = Math.max(arr.length, max)
+  }
+  return max
+}
 // @lc code=end
