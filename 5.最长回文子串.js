@@ -18,7 +18,7 @@
 // i++ c cd  
 // i++ d
 var longestPalindrome = function (s) {
-  let ans = ''; // 我也不知道这个字符串设置的用意
+  let ans = ''; // 这个字符串临时变量
   let max = 0;
   let len = s.length;
   for (let i = 0; i < len; i++) {
