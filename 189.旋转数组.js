@@ -38,8 +38,34 @@ var rotate = function (nums, k) {
   }
 };
 
+// 0729复习 这道题目 考博老说 说如果没见过不好做
+// 但是这道题目可以采用三次翻转得到。
+// 第一次翻转 我们全部倒过来 7654321
+// 第二次 我们根据翻转的次数 分成两边
+// 765 | 4321 
+// 左边翻转 变成 567  
+// 右边再进行翻转变成 1234
+var rotate = function (nums, k) {
+  // 首先求余数 比方说我这里有7 个数  我翻转7次 还是这个样子
+  k %= nums.length;
+  // 首先整个数组翻转
+  reverse(nums, 0, nums.length - 1);
+  // 然后翻转 翻转 前k个元素
+  reverse(nums, 0, k - 1);
+  // 翻转从k 到最后一位
+  reverse(nums, k, nums.length - 1);
+}
+
+// 数组和字符串的翻转
+function reverse(nums, start, end) {
+  while (start < end) {
+    let temp = nums[start];
+    nums[start] = nums[end];
+    nums[end] = temp;
+    start++
+    end--;
+  }
+}
 rotate([1, 2, 3, 4, 5, 6, 7], 3);
-
-
 // @lc code=end
 
