@@ -69,7 +69,9 @@
 // 然后遍历左子树，右子树 因为栈树先入后出，所以我们先右子树入栈 然后左子树入栈
 // 继续出栈（左子树被出栈）
 var preorderTraversal = function (root) {
+  // 初始化这个list 其实就是最终返回的数组
   const list = [];
+  // 借助栈这种数据结构,先入后出
   const stack = [];
   // 当根节点不为空的时候，将根节点入栈
   if (root) {
@@ -96,18 +98,18 @@ var preorderTraversal = function (root) {
 
 // 0723 复习二叉树的先序遍历。
 // 树型结构中，使用递归进行遍历是最简单的
-var preorderTraversal = function (root) {
-  let result = [];
-  let preorderTraversNode = function (node) {
-    if (node) { // 如果node 存在的话
-      result.push(node.val);
-      // 遍历左子树
-      preorderTraversNode(node.left)
-      // 遍历右子树
-      preorderTraversNode(node.right)
-    }
-  }
-  preorderTraversNode(root)
-  return result;
-};
+// var preorderTraversal = function (root) {
+//   let result = [];
+//   let preorderTraversNode = function (node) {
+//     if (node) { // 如果node 存在的话
+//       result.push(node.val);
+//       // 遍历左子树
+//       preorderTraversNode(node.left)
+//       // 遍历右子树
+//       preorderTraversNode(node.right)
+//     }
+//   }
+//   preorderTraversNode(root)
+//   return result;
+// };
 
