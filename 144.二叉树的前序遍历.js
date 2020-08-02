@@ -48,53 +48,57 @@
 // 我们按照高度顺序一层层的访问整棵树，高层次的节点，高层次的节点
 // 会比低层次的节点优先访问到，
 // 这道题目使用非递归的写法，我们需要借助栈这种数据结构的辅助
-// var preorderTraversal = function (root) {
-//   let result = [];
-//   let preorderTraversNode = function (node) {
-//     if (node) { // 如果node 存在的话
-//       result.push(node.val);
-//       // 遍历左子树
-//       preorderTraversNode(node.left)
-//       // 遍历右子树
-//       preorderTraversNode(node.right)
-//     }
-//   }
-//   preorderTraversNode(root)
-//   return result;
-// };
+var preorderTraversal = function (root) {
+  let result = [];
+  helper(root, result);
+  return result;
+};
+// 递归辅助函数
+var helper = function (root, result) {
+  if (root !== null) {
+    result.push(root.val)
+    if (root.left !== null) {
+      helper(root.left, result)
+    }
+    if (root.right !== null) {
+      helper(root.right, result)
+    }
+  }
+}
+
 // 利用栈来记录遍历的过程，实际上，递归就使用了调用栈，所以这里我们可以用栈来模拟递归的过程
 // 迭代实现:
 // 首先根元素入栈
 // 将根节点出栈，将根节点的值放入结果数组中。
 // 然后遍历左子树，右子树 因为栈树先入后出，所以我们先右子树入栈 然后左子树入栈
 // 继续出栈（左子树被出栈）
-var preorderTraversal = function (root) {
-  // 初始化这个list 其实就是最终返回的数组
-  const list = [];
-  // 借助栈这种数据结构,先入后出
-  const stack = [];
-  // 当根节点不为空的时候，将根节点入栈
-  if (root) {
-    stack.push(root);
-  }
-  // 循环的条件是栈不为空
-  while (stack.length > 0) {
-    // 将栈顶的元素弹出来
-    const curNode = stack.pop();
-    // 第一步的时候，先访问的是根节点
-    list.push(curNode.val);
+// var preorderTraversal = function (root) {
+//   // 初始化这个list 其实就是最终返回的数组
+//   const list = [];
+//   // 借助栈这种数据结构,先入后出
+//   const stack = [];
+//   // 当根节点不为空的时候，将根节点入栈
+//   if (root) {
+//     stack.push(root);
+//   }
+//   // 循环的条件是栈不为空
+//   while (stack.length > 0) {
+//     // 将栈顶的元素弹出来
+//     const curNode = stack.pop();
+//     // 第一步的时候，先访问的是根节点
+//     list.push(curNode.val);
 
-    // 我们先打印左子树，然后是右子树
-    // 所以先加入栈的是右子树，然后是左子树
-    if (curNode.right !== null) {
-      stack.push(curNode.right)
-    }
-    if (curNode.left !== null) {
-      stack.push(curNode.left)
-    }
-  }
-  return list
-};
+//     // 我们先打印左子树，然后是右子树
+//     // 所以先加入栈的是右子树，然后是左子树
+//     if (curNode.right !== null) {
+//       stack.push(curNode.right)
+//     }
+//     if (curNode.left !== null) {
+//       stack.push(curNode.left)
+//     }
+//   }
+//   return list
+// };
 
 // 0723 复习二叉树的先序遍历。
 // 树型结构中，使用递归进行遍历是最简单的
