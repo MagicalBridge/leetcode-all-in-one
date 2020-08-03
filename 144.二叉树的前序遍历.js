@@ -105,3 +105,31 @@ var helper = function (root, result) {
   }
 }
 
+// 0803 复习二叉树的非递归写法
+// 首先非递归写法需要使用到 stack 这个数据结构的辅助
+// 同时需要创建 结果数组返回，这个结果数组在递归的写法中也是存在的
+// 这是题目要求的
+var preorderTraversal = function (root) {
+  let result = [];
+  let stack = [];
+
+  // 首先将根节点压入栈中。这是后悔遍历的前提条件
+  if (root !== null) {
+    stack.push(root)
+  }
+
+  while (stack.length > 0) {
+    // 将当前的栈顶元素取出来
+    const curNode = stack.pop();
+    result.push(curNode.val);
+
+    // 栈的特点是后进先出 因为我们是先序遍历，先是 root 然后是左节点 然后是右节点
+    if (curNode.right !== null) {
+      stack.push(curNode.right)
+    }
+    if (curNode.left !== null) {
+      stack.push(curNode.left)
+    }
+  }
+  return result
+} 
