@@ -60,18 +60,22 @@
  * @param {TreeNode} q
  * @return {boolean}
  */
-// 这里使用递归的思想来解决问题
-// 递归的终止条件是有三个
+// 靠直觉，最简单的方式是使用递归 首先判断 p 和 q 是不是null然后判断他们的值是否相等
+// 如果以上判断都通过，则递归对子节点做相同的操作
 var isSameTree = function (p, q) {
+  // 上面的这三个判断其实递归的终止条件
+  // 两个节点都是null
   if (p === null && q === null) {
     return true
   }
+  // 有一个为null 另一个不是 肯定不相同
   if (p === null || q === null) {
     return false
   }
+  // 说明这个节点不是null 就比较两个值的大小
   if (p.val !== q.val) {
     return false
   }
+  // 同时满足才行
   return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
 };
-
