@@ -28,48 +28,11 @@
  * 进阶: 递归算法很简单，你可以通过迭代算法完成吗？
  * 
  */
-/**
- * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val;
- *     this.left = this.right = null;
- * }
- */
-/**
- * @param {TreeNode} root
- * @return {number[]}
- */
-// 有两种通用的遍历树的策略：
-// 深度优先搜素 （DFS）:
-// 在这个策略中，我们采用深度作为优先级，以便从根开始一直到达
-// 某个确定的叶子，然后返回到根到达另一个分支
-// 深度优先遍历有可以根据根、左孩子、右孩子 分为 前序遍历、中序遍历、后续遍历
-// 广度优先搜索（BFS）
-// 我们按照高度顺序一层层的访问整棵树，高层次的节点，高层次的节点
-// 会比低层次的节点优先访问到，
-// 这道题目使用非递归的写法，我们需要借助栈这种数据结构的辅助
-var preorderTraversal = function (root) {
-  let result = [];
-  helper(root, result);
-  return result;
-};
-// 递归辅助函数
-var helper = function (root, result) {
-  if (root !== null) {
-    result.push(root.val)
-    if (root.left !== null) {
-      helper(root.left, result)
-    }
-    if (root.right !== null) {
-      helper(root.right, result)
-    }
-  }
-}
 
 // 利用栈来记录遍历的过程，实际上，递归就使用了调用栈，所以这里我们可以用栈来模拟递归的过程
+// 本题使用的是广度优先的算法:
 // 迭代实现:
-// 首先根元素入栈
-// 将根节点出栈，将根节点的值放入结果数组中。
+// 首先根元素入栈，将根节点出栈，将根节点的值放入结果数组中。
 // 然后遍历左子树，右子树 因为栈树先入后出，所以我们先右子树入栈 然后左子树入栈
 // 继续出栈（左子树被出栈）
 // var preorderTraversal = function (root) {
@@ -100,20 +63,45 @@ var helper = function (root, result) {
 //   return list
 // };
 
-// 0723 复习二叉树的先序遍历。
-// 树型结构中，使用递归进行遍历是最简单的
-// var preorderTraversal = function (root) {
-//   let result = [];
-//   let preorderTraversNode = function (node) {
-//     if (node) { // 如果node 存在的话
-//       result.push(node.val);
-//       // 遍历左子树
-//       preorderTraversNode(node.left)
-//       // 遍历右子树
-//       preorderTraversNode(node.right)
-//     }
-//   }
-//   preorderTraversNode(root)
-//   return result;
-// };
+
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+// 有两种通用的遍历树的策略：
+// 深度优先搜素 （DFS）:
+// 在这个策略中，我们采用深度作为优先级，以便从根开始一直到达某个确定的叶子，然后返回到根到达另一个分支深度优先遍历有可以根据根、左孩子、右孩子 分为 前序遍历、中序遍历、后续遍历
+// 广度优先搜索（BFS）:
+// 我们按照高度顺序一层层的访问整棵树，高层次的节点, 会比低层次的节点优先访问到，
+// 使用非递归的写法，需要借助栈这种数据结构的辅助解答
+
+// 0803 树的前序遍历的复习
+// 这种借助递归辅助函数的写法真的非常棒。
+// 这也是 在做前中后序遍历的基础
+var preorderTraversal = function (root) {
+  // 因为最后的结果是
+  let result = [];
+  helper(root, result);
+  return result;
+}
+
+var helper = function (root, result) {
+  if (root !== null) {
+    result.push(root.val)
+
+    if (root.left !== null) {
+      helper(root.left, result)
+    }
+    if (root.right !== null) {
+      helper(root.right, result)
+    }
+  }
+}
 
