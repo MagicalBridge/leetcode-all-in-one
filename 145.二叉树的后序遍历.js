@@ -16,7 +16,7 @@
  * @param {TreeNode} root
  * @return {number[]}
  */
-// 还是
+// 关于二叉树的
 var postorderTraversal = function (root) {
   let result = [];
   helper(root, result);

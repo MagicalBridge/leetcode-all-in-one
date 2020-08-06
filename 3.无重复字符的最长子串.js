@@ -102,4 +102,27 @@ var lengthOfLongestSubstring = function (s) {
   }
   return max
 }
+
+// 0806 复习，无重复字符的最长子串
+// 给定一个字符串，请你找出其中不含有重复字符串的最长的子串
+// 的长度。
+// 入参是一个字符串 s 
+var lengthOfLongestSubstring = function (s) {
+  // 维护一个滑动窗口的数组 用于存放 遍历过的字符串。
+  let arr = [];
+  let max = 0;
+  // 肯定会有一个循环来遍历整个字符串
+  for (let i = 0; i < s.length; i++) {
+    // 首先使用indexOf 这个方法进行排查数组中是否有对应的字符
+    let index = arr.indexOf(s[i]);
+    // 已经存在过这个元素,将数组从头开始到当前位置的数据全部清空
+    // 数组的splice方法,这个api
+    if (index !== -1) {
+      arr.splice(0, index + 1)
+    }
+    arr.push(s.charAt(i));
+    max = Math.max(arr.length, max)
+  }
+  return max
+}
 // @lc code=end
