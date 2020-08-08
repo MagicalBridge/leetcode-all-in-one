@@ -34,8 +34,11 @@
 // 返回 sentinel.next。
 var removeElements = function (head, val) {
   let dummyHead = new ListNode(0);
+  // 这个步骤就是做一个链接将虚拟头结点和链表做一个关联
   dummyHead.next = head;
+  // 前置节点
   let prev = dummyHead;
+  // 将head赋值给另一个变量
   let curr = head;
 
   while (curr !== null) {
