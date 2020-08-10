@@ -40,20 +40,18 @@
  * @param {string} needle
  * @return {number}
  */
-// 实现的方式是使用滑动窗口, 沿着字符串逐步移动滑动窗口，将窗口内的字符串和needle字符串比较
-// 虽然实现起来貌似比较简单，但是
+// 使用滑动窗口, 沿着字符串逐步移动滑动窗口，
+// 将窗口内的字符串和needle字符串比较
 var strStr = function (haystack, needle) {
   // 分别保存两个数字的长度。
   let l = needle.length;
   let n = haystack.length;
-
   // 这个地方循环的条件为什么是 n - l + 1;
-  // 这其实是一种算法，假设 haystack 是8  needle 是 4
-  // 那么 滑动的次数就是 8 - 4 + 1 = 5 次
-  // 这仿佛是一种 算法逻辑
+  // 这其实是一种算法，假设 haystack 是 8 needle 是 4
+  // 那么滑动的次数就是 8 - 4 + 1 = 5次
   for (let i = 0; i < n - l + 1; i++) {
-    // 循环的次数 substring 这种情况下  i = 0  i+2 = 2
-    // 不包含 i+l 这个元素。
+    // substring用法是包含头不包含尾
+    // 不包含i+l这个元素。
     if (haystack.substring(i, i + l) === needle) {
       return i
     }
@@ -61,4 +59,3 @@ var strStr = function (haystack, needle) {
   // 找不到返回-1;
   return -1;
 };
-
