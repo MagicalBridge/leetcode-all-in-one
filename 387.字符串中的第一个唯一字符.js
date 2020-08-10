@@ -29,5 +29,14 @@ var firstUniqChar = function (s) {
   }
   return -1
 };
+
+// 387 0810复习 hashTable string 这是对应的两个标签
+
+var firstUniqChar = function (s) {
+  let map = new Map();
+  for (let i = 0; i < s.length; i++) {
+    
+  }
+}
 // @lc code=end
 
