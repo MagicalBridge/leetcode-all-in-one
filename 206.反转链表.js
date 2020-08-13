@@ -34,6 +34,7 @@
  * @return {ListNode}
  */
 // 链表翻转的精髓在于对指针的把握
+// 思考这样一个问题: 
 var reverseList = function (head) {
   // 首先考虑边界条件 链表本身为空,或者只有一个节点。
   if(head === null || head.next === null) {
