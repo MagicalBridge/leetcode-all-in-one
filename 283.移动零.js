@@ -34,26 +34,26 @@
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-// var moveZeroes = function (nums) {
-//   let nonZeroElements = [];
-//   for (let i = 0; i < nums.length; i++) {
-//     if (nums[i] !== 0) {
-//       nonZeroElements.push(nums[i]);
-//     }
-//   };
+var moveZeroes = function (nums) {
+  let nonZeroElements = [];
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== 0) {
+      nonZeroElements.push(nums[i]);
+    }
+  };
 
-//   // 将nonZeroElements 放回原来的数组
-//   // 经过这次循环我们可以知道 现在nums中从0到nonZeroElements.length-1 部分的元素
-//   // 都是原来数组中非零的元素
-//   for (let i = 0; i < nonZeroElements.length; i++) {
-//     nums[i] = nonZeroElements[i];
-//   }
+  // 将nonZeroElements 放回原来的数组
+  // 经过这次循环我们可以知道 现在nums中从0到nonZeroElements.length-1 部分的元素
+  // 都是原来数组中非零的元素
+  for (let i = 0; i < nonZeroElements.length; i++) {
+    nums[i] = nonZeroElements[i];
+  }
 
-//   // 剩下的元素简单的赋值为0 就好了
-//   for(let i = nonZeroElements.length;i<nums.length;i++) {
-//     nums[i] = 0;
-//   }
-// };
+  // 剩下的元素简单的赋值为0 就好了
+  for (let i = nonZeroElements.length; i < nums.length; i++) {
+    nums[i] = 0;
+  }
+};
 
 
 // 这里使用双指针的这种解题的思路，设置一个k变量作为突破口
@@ -75,22 +75,22 @@
 //   }
 // };
 
-var moveZeroes = function (nums) {
-  let k = 0; // k的含义是从[0,k) 前闭后开的区间内 全部都是非零元素。
+// var moveZeroes = function (nums) {
+//   let k = 0; // k的含义是从[0,k) 前闭后开的区间内 全部都是非零元素。
 
-  // 遍历到第i个元素后，保证[0,i] 中所有的非零元素
-  // 都按照顺序排列在[0,k) 中
-  // 同时【k,i】为0
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] !== 0) {
-      if (i !== k) {
-        [nums[k], nums[i]] = [nums[i], nums[k]];
-        k++;
-      } else {
-        k++
-      }
+//   // 遍历到第i个元素后，保证[0,i] 中所有的非零元素
+//   // 都按照顺序排列在[0,k) 中
+//   // 同时【k,i】为0
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] !== 0) {
+//       if (i !== k) {
+//         [nums[k], nums[i]] = [nums[i], nums[k]];
+//         k++;
+//       } else {
+//         k++
+//       }
 
-    }
-  };
-};
+//     }
+//   };
+// };
 
