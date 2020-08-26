@@ -83,5 +83,31 @@ var addTwoNumbers = function (l1, l2) {
   // 返回 头结点
   return dummy.next;
 }
+
+// 0826 复习算法题解
+var addTwoNumbers = function (l1, l2) {
+  // 这仿佛已经成为一种套路,两个链表相加
+  // 为什么这里需要创建哑结点,这是一个值得思考的问题
+  // 使用虚拟头结点可以省去很多的边界条件的判断
+  let dummyHead = new ListNode(-1)
+  // 之后有个指针不断地向后移动，但是dummmy不能移动
+  let temp = dummyHead;
+  let sum = 0;
+  let carry = 0;
+
+  while (l1 || l2) {
+    // 初始化的时候就要将sum加起来 
+    sum = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + carry;
+    temp.next = new ListNode(sum % 10);
+    // 将temp 指针向后移动
+    temp = temp.next;
+
+    carry = carry >= 10 ? 1 : 0;
+    l1 && (l1 = l1.next)
+    l2 && (l2 = l2.next)
+  }
+  carry && (temp.next = new ListNode(carry));
+  return dummyHead.next
+}
 // @lc code=end
 
