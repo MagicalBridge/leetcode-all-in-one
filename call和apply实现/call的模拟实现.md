@@ -125,6 +125,40 @@ for(var i = 1; len < arguments.length; i < len; i++) {
 ```
 不定长参数的问题解决了, 我们接着要把这个参数数组放在要被执行的函数的参数里面去。
 
+我们可以使用eval方法拼接成一个函数，类似于这样:
+
+```js
+eval('context.fn('+args+')')
+```
+
+这里的args会自动的调用Array.toString()这个方法。
+
+所以我们的第二个版本克服了两个问题，代码如下。
+
+```js
+// 第二版 入参context所指代的还是 this所指向的那个对象
+Function.prototype.call2 = function(context){
+  context.fn = this;
+  // 声明一个空的数组
+  var args = [];
+  // 使用for循序，将从第二个参数到最后的放进数组中
+  for(var i = 1, len = arguments.length;i < len; i++) {
+    args.push('arguments['+ i +']');
+  }
+  // 执行这个函数，就会调用toString方法，然后传递进去这个参数
+  eval('context.fn(' + args + ')');
+  delete context.fn
+}
+```
+
+## 模拟实现的第三步:
+
+现在还存在两个问题:
+1、this的参数可以传递null，当为null的时候 视为指向window
+2、函数是可以拥有返回值的
+
+
+
 
 
 
