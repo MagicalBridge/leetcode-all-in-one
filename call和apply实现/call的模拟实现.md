@@ -157,6 +157,24 @@ Function.prototype.call2 = function(context){
 1、this的参数可以传递null，当为null的时候 视为指向window
 2、函数是可以拥有返回值的
 
+```js
+Function.prototype.call2 = function(context) {
+  var context = context || window;
+  // 谁调用这个方法谁就是this，就将这个函数绑定成 传入执行上下文
+  context.fn = this;
+  var args = [];
+
+  for(var i = 1;len = arguments.length; i < len; i++) {
+    args.push('arguments['+ i +']');
+  }
+  
+  var result = eval('context.fn('+args+')');
+
+  delete context.fn
+  return result
+}
+```
+
 
 
 
