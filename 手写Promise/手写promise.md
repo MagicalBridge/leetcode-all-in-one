@@ -148,5 +148,66 @@ Promise.prorotype.then = function(fn1, fn2) {
 * 如果 promise 状态是 rejected 需要执行 fn2;
 * 如果 promise 状态是 pending 我们并不能确定是调用 fn1 还是调用 fn2 只能先把方法都存起来 fn1Callback fn2Callback 数组中，等到 Promise 的状态确定后再做处理。
 
+根据上面的分析解析下代码:
+```js
+Promise.prototype.then = function(fn1,fn2) {
+  var self = this;
+  var promise2;
+  fn1 = typeof fn1 === 'function' ? fn1: function(v) {}
+  fn2 = typeof fn2 === 'function' ? fn2: function(r) {}
+
+  if(self.state === 'resolve') {
+    return promise2 = new Promise(function(resolve,reject){
+      //把fn1 和 fn2 放在try catch 里面 毕竟是用户传递进来的，报错很常见
+      try {
+        var x = fn1(self.data);
+        // fn1 执行之后会有返回值通过 resolve 注入到 then 返回的 promise中
+        resolve(x)
+      } catch(err){
+        reject(err)
+      }
+    })
+  }
+
+  if(self.state === 'reject') {
+    return promise2 = new Promise(function(resolve,reject){
+      try {
+        var x = fn1(self.data);
+        // fn1 执行之后会有返回值通过 resolve 注入到 then 返回的 promise中
+        reject(x)
+      } catch(err){
+        reject(err)
+      }
+    })
+  }
+
+  if(self.state === 'pending') {
+    return promise2 = new Promise(function(resolve,reject){
+      this.fn1Callback.push(function(value){
+        try {
+        var x = fn1(self.data);
+        // fn1 执行之后会有返回值通过 resolve 注入到 then 返回的 promise中
+        resolve(x)
+        } catch(err){
+          reject(err)
+        }
+      })
+
+      this.fn2Callback.push(function(value){
+        try {
+          var x = fn1(self.data);
+          reject(x)
+        } catch(err){
+          reject(err)
+        }
+      })
+    })
+  }
+}
+```
+
+fn1和fn2 都是用户传入的, 有可能报错，所以要放在try catch 里面
+fn1和fn2 的返回值我们记为x, 规范中的命名也是x 保持一致，x值在下文中频繁使用
+
 
 
