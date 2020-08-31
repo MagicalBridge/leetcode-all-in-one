@@ -102,12 +102,34 @@ var addTwoNumbers = function (l1, l2) {
     // 将temp 指针向后移动
     temp = temp.next;
 
-    carry = carry >= 10 ? 1 : 0;
+    carry = sum >= 10 ? 1 : 0;
     l1 && (l1 = l1.next)
     l2 && (l2 = l2.next)
   }
   carry && (temp.next = new ListNode(carry));
   return dummyHead.next
+}
+
+// 0831复习
+var addTwoNumbers = function (l1, l2) {
+  // 这道题目使用虚拟头结点
+  let dummyHead = new ListNode(-1);
+  let temp = dummyHead;
+  let sum = 0;
+  let carry = 0;
+  while (l1 || l2) {
+    // 先计算出和是多少
+    sum = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + carry;
+    // 加起来的数最大应该是19，只保留这个1 9 作为进位使用
+    temp.next = new ListNode(sum % 10);
+    temp = temp.next;
+    // 保存进位
+    carry = sum >= 10 ? 1 : 0
+    l1 && (l1 = l1.next)
+    l2 && (l2 = l2.next)
+  }
+  carry && (temp.next = new ListNode(carry));
+  return dummyHead.next;
 }
 // @lc code=end
 
