@@ -60,4 +60,4 @@ var reverseList = function (head) {
     cur = next; 
   }
   return pre;
-};
+}
