@@ -52,15 +52,34 @@
 
 // 这道题目中,第一个节点肯定是需要保留的
 // 
+// var deleteDuplicates = function (head) {
+//   let cur = head; // 首先将头节点赋值给一个cur变量,意思是初始化的时候指向 之后会向后面移动
+//   // 思路是比较当前的节点和下一个节点的v  al值，所以为了防止空指针的异常，前提条件就是
+//   while (cur !== null && cur.next !== null) {
+//     if (cur.val === cur.next.val) {
+//       // 将cur的next指针指向下一个元素的下一个元素
+//       cur.next = cur.next.next;
+//     } else {
+//       cur = cur.next
+//     }
+//   }
+//   return head;
+// };
+
+// 删除链表中的重复项 这道题目说的非常的明白，是排序的链表
+// 
 var deleteDuplicates = function (head) {
-  let cur = head; // 首先将头节点赋值给一个cur变量,意思是初始化的时候指向 之后会向后面移动
-  // 思路是比较当前的节点和下一个节点的v  al值，所以为了防止空指针的异常，前提条件就是
-  while (cur != null && cur.next !== null) {
+  // 多加了判空条件的处理
+  if (head === null) {
+    return head
+  }
+  let cur = head;
+  // 在接下来的变换中，会包含一些判断val的情况
+  while (cur !== null && cur.next !== null) {
     if (cur.val === cur.next.val) {
-      // 将cur的next指针指向下一个元素的下一个元素
       cur.next = cur.next.next;
     } else {
-      cur = cur.next
+      cur = cur.next;
     }
   }
   return head;
