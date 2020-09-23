@@ -25,5 +25,24 @@ var maxProfit = function (prices) {
   }
   return res;
 };
+
+// 针对暴力解法的优化写法: 我们发现，只需要关心之前（不包括现在）看到的最低股价，于是在
+// 遍历遍历过程中,记录下之前看到的最低股价，就可以省去内循环
+var maxProfit = function (prices) {
+  let len = prices.length;
+
+  if(len < 2) {
+    return 0;
+  }
+  let res = 0;
+  // 表示在当前位置之前的最小值，假设修正法（打擂台法）
+  let minVal = prices[0];
+  // 注意：这里从 1 开始
+  for (let i = 1; i < len; i++) {
+    res = Math.max(res, prices[i] - minVal);
+    minVal = Math.min(minVal, prices[i]);
+  }
+  return res;
+};
 // @lc code=end
 
