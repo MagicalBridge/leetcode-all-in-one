@@ -3,6 +3,7 @@ const flatten = (arr) => {
 
   for (let i = 0; i < arr.length; i++) {
     if (Array.isArray(arr[i])) {
+      // 最近在实现这个个数组扁平化的过程中时候这部分总是写错
       result = result.concat(flatten(arr[i]));
     } else {
       result.push(arr[i])
