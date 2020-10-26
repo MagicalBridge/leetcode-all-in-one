@@ -10,15 +10,28 @@ function getUserAction(e) {
 
 container.onmousemove = debounce(getUserAction, 1000);
 
-// 第四版
+// function debounce(func, wait) {
+//   var timeout;
+//   return function () {
+//     var context = this;
+//     var args = arguments;
+//     if (timeout) clearTimeout(timeout);
+//     timeout = setTimeout(function () {
+//       func.apply(context, args)
+//     }, wait); 
+//   }
+// }
+
 function debounce(func, wait) {
   var timeout;
   return function () {
-    var context = this;
     var args = arguments;
-    if (timeout) clearTimeout(timeout);
+    var context = this;
+    if (timeout) {
+      clearTimeout(timeout)
+    }
     timeout = setTimeout(function () {
       func.apply(context, args)
-    }, wait); 
+    }, wait)
   }
 }
