@@ -13,25 +13,25 @@ container.onmousemove = debounce(getUserAction, 1000);
 // function debounce(func, wait) {
 //   var timeout;
 //   return function () {
-//     var context = this;
 //     var args = arguments;
-//     if (timeout) clearTimeout(timeout);
+//     var context = this;
+//     if (timeout) {
+//       clearTimeout(timeout)
+//     }
 //     timeout = setTimeout(function () {
 //       func.apply(context, args)
-//     }, wait); 
+//     }, wait)
 //   }
 // }
 
 function debounce(func, wait) {
-  var timeout;
-  return function () {
-    var args = arguments;
-    var context = this;
-    if (timeout) {
-      clearTimeout(timeout)
-    }
-    timeout = setTimeout(function () {
+  let timeout;
+  return () => {
+    let context = this;
+    let args = arguments;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
       func.apply(context, args)
-    }, wait)
+    }, wait);
   }
 }
