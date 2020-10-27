@@ -1,18 +1,15 @@
-/**
- * 递归实现
- * @param {*} arr 
- */
 function flatten(arr) {
   let res = [];
-  for (let i = 0, len = arr.length; i < len; i++) {
-    if (Array.isArray(arr[i])) { // 如果发现数组内部某一项还是数组 需要启动递归调用
+  for (let i = 0; i < arr.length; i++) {
+    if(Array.isArray(arr[i])) { // 数组的某一项还是数组
       res = res.concat(flatten(arr[i]));
     } else {
-      res.push(arr[i])
+      res.push(arr[i]);
     }
   }
   return res;
 }
+
 const arr = [1, [2, 3, 4, 5, [7, 8, 9]]]
 const res = flatten(arr);
 console.log(res);
