@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2020-06-20 17:41:37
- * @LastEditTime: 2020-06-20 18:07:11
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /leetcode/BubbleSort/BubbleSort3.js
- */
 function bubbleSort(arr) {
   let temp = 0;
   let sortFlag = false; // 设置一个 布尔变量  标识是否进行过交换
