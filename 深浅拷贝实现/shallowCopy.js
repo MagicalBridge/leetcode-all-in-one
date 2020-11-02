@@ -14,3 +14,19 @@ var shallowCopy = function (obj) {
   }
   return newObj;
 }
+
+// 浅拷贝的原理其实也是非常简单 可以受用 Object.assingn() 也可以使用
+// for in 循环 来实现
+// function shallowCopy(obj) {
+//   if (typeof obj !== 'object') {
+//     return
+//   }
+//   // 这个部分写错了 真的很不应该
+//   let newObj = Array.isArray(obj) ? [] : {}
+//   for (let key in obj) {
+//     if(obj.hasOwnProperty(key)) {
+//       newObj[key] = obj[key]
+//     }
+//   }
+//   return newObj
+// }
