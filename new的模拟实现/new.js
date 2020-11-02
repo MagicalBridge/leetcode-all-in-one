@@ -15,3 +15,19 @@ function objFactory() {
   var ret = Constructor.apply(obj, arguments);
   return  typeof ret === 'object' ? ret : obj;
 }
+
+// 因为new是关键字, 因此我们只能写一个函数模仿new的功能
+function objFactory() {
+  // 创建一个空的对象。
+  var obj = new Object();
+  // 拿到构造函数,shift 能够改变数组的大小和结构 也就是通过这个操作
+  // 之后 arguments 会改变。
+  var Constructor = Array.prototype.shift.call(arguments); 
+  // 还记原型和原型链的关系吗。对象实例 通过 __proto__ 
+  // 链接到自身的原型对象。
+  obj.__proto__ = Constructor.prototype;
+  // 执行这个函数 并改变this指向
+  var ret =  Constructor.apply(obj,arguments);
+  // 如果返回值是一个对象的话 就直接返回，如果不是的话 返回obj。
+  return typeof ret === 'object' ? ret : obj;
+}
